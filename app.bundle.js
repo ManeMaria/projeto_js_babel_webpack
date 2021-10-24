@@ -1,0 +1,1 @@
+(()=>{"use strict";var e,t;e=document.createElement("div"),t=document.querySelector("body"),e.setAttribute("class","estilo"),e.textContent="teste 2",t.appendChild(e)})();
