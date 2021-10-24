@@ -10,26 +10,45 @@ passo-a-passo webpack babel
 	- criar arquivo webpack.config.js
 
 	- config webpack
-		const path = require('path');
-		module.exports = {
-    		entry: {
-        		app: `${__dirname}/src/app.js`
-    		},
-    		output: {
-				path: path.resolve(__dirname, 'build'),
-				filename: 'app.bundle.js',
-    		},
-			module: {
-				rules:[{
-					test: /\.js?$/,
-					exclude: /node_modules/,
-					loader: 'babel-loader',
-					options: {
-					presets: ['@babel/preset-env'],
-					resolve: {
-						extensions: [".js"],
-					},
-				}
-			}]
-		}
-	};
+	const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+module.exports = {
+    target: ["web"],
+  entry: {
+    app: `./app.js`,
+  },
+  output: {
+    path: path.resolve(__dirname, "build"),
+    filename: "app.bundle.js",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env"],
+        },
+        resolve: {
+          extensions: [".js"],
+        },
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        resolve: {
+            extensions: [".css"],
+          },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "public/index.html",
+    }),
+    new MiniCssExtractPlugin(),
+  ],
+};
