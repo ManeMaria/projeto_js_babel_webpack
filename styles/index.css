@@ -70,6 +70,10 @@
     color: var(--white);
 }
 
+.navigation_menu a:hover .image_effect{
+    visibility: visible;
+}
+
 .container_menu_burguer {
     display: none;
 }
@@ -172,14 +176,14 @@
         background: var(--secundary-color);
         visibility: hidden;
         height: 100vh;
-        width: 5vw;
+        width: 0;
         right: 0px;
         transition: var(--default-transition);
-        font-size: 0px;
         position: fixed;
         display: flex;
         flex-wrap: wrap;
-        align-content: flex-start
+        align-content: flex-start;
+        overflow: hidden;
     }
     .burguer_menu {
         background: var(--white);
@@ -265,7 +269,7 @@
     .container_information_sec1 {
         width: 90%;
         color: var(--white);
-        margin: 0px;
+        margin: 0px 0px 20px 0px;
     }
     .container_information_sec1 h1 {
         width: 100%;
@@ -282,18 +286,11 @@
 .show_menu {
     width: calc(100vw - 100px);
     visibility: visible;
+    overflow: auto;
 }
 
 .translate_button {
     right: calc(100vw - 100px);
-}
-
-.font_none_effect {
-    font-size: 0px;
-}
-
-.font_full_effect, .show_menu {
-    font-size: 1em;
 }
 
 .image_effect {

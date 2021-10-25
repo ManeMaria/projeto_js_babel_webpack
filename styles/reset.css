@@ -15,10 +15,15 @@ html, body {
 a, li {
     text-decoration: none;
     list-style: none;
+    cursor: pointer;
 }
 
 button, input {
     border: none;
+}
+
+button {
+    cursor: pointer;
 }
 
 button, input:focus {
