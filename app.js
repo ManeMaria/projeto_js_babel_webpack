@@ -9,6 +9,8 @@ import sec from "./assets/images/sec.svg";
 import sal from "./assets/images/sal.svg";
 import app from "./assets/images/app.svg";
 import por from "./assets/images/por.svg";
+import aAp from "./assets/images/app-do-aluno.png";
+// import checked from "./assets/images/checked.svg";
 
 const addClickSection3 = () => {
   const arrow = [...document.querySelectorAll(".arrow")];
@@ -50,12 +52,14 @@ const clickMenuMobile = () => {
 };
 const addImg = () => {
   
+  const imgAppAluno = document.querySelector("#img_app_aluno");
   const imgsContent3 = document.querySelectorAll("#content3 img");
   const img_intra = document.querySelector("#img_intra");
   const images_effect = document.querySelectorAll(".image_effect");
   const burguer_menu_container = document.querySelector(
     "#container_img_menu_mobile"
   );
+  imgAppAluno.setAttribute("src", `${aAp}`);
   const imgs = [cap, ges, sec, sal, app, por];
   imgsContent3.forEach((img, i) => {
     img.setAttribute("src", `${imgs[i]}`);
