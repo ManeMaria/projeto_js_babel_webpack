@@ -11,15 +11,26 @@ import app from "./assets/images/app.svg";
 import por from "./assets/images/por.svg";
 
 const addClickSection3 = () => {
+  const arrow = [...document.querySelectorAll(".arrow")];
+  const h4 = [...document.querySelectorAll(".container_details h4")];
+  const containerDetails = [...document.querySelectorAll(".container_details")];
   const headerSection3 = [...document.querySelectorAll(".container_information_sec3_header")];
   const textSection3 =[...document.querySelectorAll(".container_information_sec3_text")];
   const limit = headerSection3.length;
-  console.log('limit :>> ', limit);
+ 
     for (let i = 0; i < limit; i++) {
       headerSection3[i].addEventListener('click',()=>{
-        return textSection3[i].classList.toggle('show_text');
+        arrow[i].classList.toggle('rotate');
+        containerDetails[i].classList.toggle('show_text_details');
+        textSection3[i].classList.toggle('show_text');
+        h4[i].classList.remove('show_text');
       });
-      
+      h4[i].addEventListener('click',()=>{
+        arrow[i].classList.toggle('rotate');
+        containerDetails[i].classList.remove('show_text_details');
+        textSection3[i].classList.remove('show_text');
+        ;
+      });
     }
 };
 const clickMenuMobile = () => {
