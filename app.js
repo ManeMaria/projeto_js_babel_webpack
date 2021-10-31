@@ -10,30 +10,70 @@ import sal from "./assets/images/sal.svg";
 import app from "./assets/images/app.svg";
 import por from "./assets/images/por.svg";
 import aAp from "./assets/images/app-do-aluno.png";
-// import checked from "./assets/images/checked.svg";
+
+const setIn = (() => {
+  let acum = 1;
+  let func;
+
+  return () => {
+    func = setInterval(() => {
+      if (acum === 199) {
+        clearInterval(func);
+      }
+
+      acum++;
+      document.querySelector(".contador").innerHTML = acum;
+    }, 25);
+  };
+})();
+
+let ticket = false;
+window.addEventListener("scroll", function () {
+  const top = document.querySelector("#contador").getBoundingClientRect().y.toFixed(0);
+  const bottom = document.querySelector("#contador").getBoundingClientRect().bottom; //rolagem
+
+  console.log('bottom :>> ', bottom);
+  console.log('window.innerHeight :>> ', window.innerHeight);
+  if (top >= 0 && bottom <= window.innerHeight) {
+    if (ticket) {
+      console.log("passou");
+      return;
+    }
+    console.log("passou false");
+    setIn();
+    console.log(
+      "%c chegou!",
+      "background: red; color: #fff; font-weigth: bold"
+    );
+    ticket = true;
+  }
+});
 
 const addClickSection3 = () => {
   const arrow = [...document.querySelectorAll(".arrow")];
   const h4 = [...document.querySelectorAll(".container_details h4")];
   const containerDetails = [...document.querySelectorAll(".container_details")];
-  const headerSection3 = [...document.querySelectorAll(".container_information_sec3_header")];
-  const textSection3 =[...document.querySelectorAll(".container_information_sec3_text")];
+  const headerSection3 = [
+    ...document.querySelectorAll(".container_information_sec3_header"),
+  ];
+  const textSection3 = [
+    ...document.querySelectorAll(".container_information_sec3_text"),
+  ];
   const limit = headerSection3.length;
- 
-    for (let i = 0; i < limit; i++) {
-      headerSection3[i].addEventListener('click',()=>{
-        arrow[i].classList.toggle('rotate');
-        containerDetails[i].classList.toggle('show_text_details');
-        textSection3[i].classList.toggle('show_text');
-        h4[i].classList.remove('show_text');
-      });
-      h4[i].addEventListener('click',()=>{
-        arrow[i].classList.toggle('rotate');
-        containerDetails[i].classList.remove('show_text_details');
-        textSection3[i].classList.remove('show_text');
-        ;
-      });
-    }
+
+  for (let i = 0; i < limit; i++) {
+    headerSection3[i].addEventListener("click", () => {
+      arrow[i].classList.toggle("rotate");
+      containerDetails[i].classList.toggle("show_text_details");
+      textSection3[i].classList.toggle("show_text");
+      h4[i].classList.remove("show_text");
+    });
+    h4[i].addEventListener("click", () => {
+      arrow[i].classList.toggle("rotate");
+      containerDetails[i].classList.remove("show_text_details");
+      textSection3[i].classList.remove("show_text");
+    });
+  }
 };
 const clickMenuMobile = () => {
   const default_button = document.querySelector("#default_button");
@@ -51,7 +91,6 @@ const clickMenuMobile = () => {
   });
 };
 const addImg = () => {
-  
   const imgAppAluno = document.querySelector("#img_app_aluno");
   const imgsContent3 = document.querySelectorAll("#content3 img");
   const img_intra = document.querySelector("#img_intra");
