@@ -15,32 +15,34 @@ const setIn = (() => {
   let acum = 1;
   let func;
 
-  return () => {
+  return (limit, id) => {
+    console.log('limit, id :>> ', limit, id);
     func = setInterval(() => {
-      if (acum === 199) {
+      if (acum === limit) {
         clearInterval(func);
       }
 
       acum++;
-      document.querySelector(".contador").innerHTML = acum;
+      document.querySelector(`#${id}`).innerHTML = acum;
     }, 25);
   };
 })();
 
 let ticket = false;
 window.addEventListener("scroll", function () {
-  const top = document.querySelector("#contador").getBoundingClientRect().y.toFixed(0);
-  const bottom = document.querySelector("#contador").getBoundingClientRect().bottom; //rolagem
+  const top = document.querySelector("#countrSchools").getBoundingClientRect().y.toFixed(0);
+  const bottom = document.querySelector("#countrSchools").getBoundingClientRect().bottom; //rolagem
 
-  console.log('bottom :>> ', bottom);
-  console.log('window.innerHeight :>> ', window.innerHeight);
+  
   if (top >= 0 && bottom <= window.innerHeight) {
+    console.log('passou');
     if (ticket) {
-      console.log("passou");
       return;
     }
-    console.log("passou false");
-    setIn();
+
+    setIn(200, 'countrSchools');
+    setIn(900, 'count10years');
+    setIn(100, 'countStudents');
     console.log(
       "%c chegou!",
       "background: red; color: #fff; font-weigth: bold"

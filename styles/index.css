@@ -652,6 +652,7 @@
         display: grid;
         place-items: center;
         filter: opacity(10%);
+       
     }
     .img_app_aluno {
         object-fit: cover;
@@ -708,6 +709,8 @@
         height: 100%;
         width: 100%;
         opacity: 20%;
+        -moz-opacity: 0.1; /* Firefox and Mozilla browsers */
+        -webkit-opacity: 0.1; /* WebKit browser e.g. Safari */
         background-position: center;
     }
 }
