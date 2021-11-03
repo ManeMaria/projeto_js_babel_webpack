@@ -10,43 +10,39 @@ import sal from "./assets/images/sal.svg";
 import app from "./assets/images/app.svg";
 import por from "./assets/images/por.svg";
 import aAp from "./assets/images/app-do-aluno.png";
+import cc from "./assets/images/img_cc.png";
 
-const setIn = (() => {
+const setCount = (limit, id, time) => {
   let acum = 1;
   let func;
 
-  return (limit, id) => {
-    console.log('limit, id :>> ', limit, id);
+  return () => {
     func = setInterval(() => {
       if (acum === limit) {
         clearInterval(func);
       }
 
-      acum++;
       document.querySelector(`#${id}`).innerHTML = acum;
-    }, 25);
+      acum++;
+    }, time || 25);
   };
-})();
+};
 
 let ticket = false;
 window.addEventListener("scroll", function () {
-  const top = document.querySelector("#countrSchools").getBoundingClientRect().y.toFixed(0);
-  const bottom = document.querySelector("#countrSchools").getBoundingClientRect().bottom; //rolagem
+  const containerCount = document.querySelector("#container_counts");
+  const top = containerCount.getBoundingClientRect().y.toFixed(0);
 
-  
-  if (top >= 0 && bottom <= window.innerHeight) {
-    console.log('passou');
+  if (top >= 0 && top <= window.innerHeight) {
     if (ticket) {
       return;
     }
-
-    setIn(200, 'countrSchools');
-    setIn(900, 'count10years');
-    setIn(100, 'countStudents');
-    console.log(
-      "%c chegou!",
-      "background: red; color: #fff; font-weigth: bold"
-    );
+    const countrSchools = setCount(100, "countStudents", 55);
+    const count10years = setCount(900, "count10years", 5);
+    const countStudents = setCount(200, "countrSchools");
+    countrSchools();
+    count10years();
+    countStudents();
     ticket = true;
   }
 });
@@ -93,6 +89,7 @@ const clickMenuMobile = () => {
   });
 };
 const addImg = () => {
+  const imgCallCenter = document.querySelector("#img_call_center");
   const imgAppAluno = document.querySelector("#img_app_aluno");
   const imgsContent3 = document.querySelectorAll("#content3 img");
   const img_intra = document.querySelector("#img_intra");
@@ -100,6 +97,7 @@ const addImg = () => {
   const burguer_menu_container = document.querySelector(
     "#container_img_menu_mobile"
   );
+  imgCallCenter.setAttribute("src", `${cc}`);
   imgAppAluno.setAttribute("src", `${aAp}`);
   const imgs = [cap, ges, sec, sal, app, por];
   imgsContent3.forEach((img, i) => {
