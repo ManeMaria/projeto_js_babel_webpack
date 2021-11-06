@@ -24,7 +24,7 @@ const setCount = (limit, id, time) => {
 
       document.querySelector(`#${id}`).innerHTML = acum;
       acum++;
-    }, time || 25);
+    }, time || 1);
   };
 };
 
@@ -37,9 +37,9 @@ window.addEventListener("scroll", function () {
     if (ticket) {
       return;
     }
-    const countrSchools = setCount(100, "countStudents", 55);
-    const count10years = setCount(900, "count10years", 5);
-    const countStudents = setCount(200, "countrSchools");
+    const countrSchools = setCount(100, "countStudents", 3);
+    const count10years = setCount(900, "count10years");
+    const countStudents = setCount(200, "countrSchools",2);
     countrSchools();
     count10years();
     countStudents();
