@@ -9,6 +9,6 @@
 > - HTML5
 
 
-confira o projeto em produção clicando [aqui](https://manemaria.github.io/projeto_js_babel_webpack/)
+confira o projeto em produção [aqui](https://manemaria.github.io/projeto_js_babel_webpack/)
 
 <i>web disign do projeto: [Ingo Damasceno.](https://www.linkedin.com/in/ingo-damasceno-a061b51b9/)</i>
