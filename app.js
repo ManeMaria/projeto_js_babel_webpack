@@ -11,6 +11,17 @@ import app from "./assets/images/app.svg";
 import por from "./assets/images/por.svg";
 import aAp from "./assets/images/app-do-aluno.png";
 import cc from "./assets/images/img_cc.png";
+import i_gm from "./assets/icons/i_gm.svg";
+import i_lo from "./assets/icons/i_lo.svg";
+import i_ph from "./assets/icons/i_ph.svg";
+import i_ws from "./assets/icons/i_ws.svg";
+
+const inputMenuBurguerMobile = document.querySelector("#burguer_menu");
+const getYear = () => {
+  const year = new Date().getFullYear();
+  const span = document.querySelector("#date");
+  span.textContent = year;
+};
 
 const setCount = (limit, id, time) => {
   let acum = 1;
@@ -39,7 +50,7 @@ window.addEventListener("scroll", function () {
     }
     const countrSchools = setCount(100, "countStudents", 3);
     const count10years = setCount(900, "count10years");
-    const countStudents = setCount(200, "countrSchools",2);
+    const countStudents = setCount(200, "countrSchools", 2);
     countrSchools();
     count10years();
     countStudents();
@@ -73,22 +84,34 @@ const addClickSection3 = () => {
     });
   }
 };
+const clickCloseMenuMobile = () => {
+  const navigationMenu = document.querySelectorAll("#navigation_menu a");
+  for (const ele of navigationMenu) {
+    ele.addEventListener("click", () => {
+      inputMenuBurguerMobile.click();
+    });
+  }
+};
+
 const clickMenuMobile = () => {
-  const default_button = document.querySelector("#default_button");
-  const input = document.querySelector("#burguer_menu");
-  const div = document.querySelector("#burguer_menu_container");
+  const burguerMenuContainer = document.querySelector(
+    "#burguer_menu_container"
+  );
   const menu = document.querySelector("#menu");
-  input.addEventListener("click", () => {
+
+  inputMenuBurguerMobile.addEventListener("click", () => {
     const lessThan552 = window.innerWidth < 552;
     if (lessThan552) {
       menu.classList.toggle("show_menu_small_w");
-      div.classList.toggle("translate_button_small_w");
+      burguerMenuContainer.classList.toggle("translate_button_small_w");
     }
     menu.classList.toggle("show_menu");
-    div.classList.toggle("translate_button");
+    burguerMenuContainer.classList.toggle("translate_button");
   });
 };
+
 const addImg = () => {
+  const iconsFooterPag1 = document.querySelectorAll(".icons_footer_pag1");
   const imgCallCenter = document.querySelector("#img_call_center");
   const imgAppAluno = document.querySelector("#img_app_aluno");
   const imgsContent3 = document.querySelectorAll("#content3 img");
@@ -96,6 +119,10 @@ const addImg = () => {
   const images_effect = document.querySelectorAll(".image_effect");
   const burguer_menu_container = document.querySelector(
     "#container_img_menu_mobile"
+  );
+  const imgsFoP1 = [i_gm, i_ws, i_ph, i_lo];
+  iconsFooterPag1.forEach((ele, i) =>
+    ele.setAttribute("src", `${imgsFoP1[i]}`)
   );
   imgCallCenter.setAttribute("src", `${cc}`);
   imgAppAluno.setAttribute("src", `${aAp}`);
@@ -111,6 +138,8 @@ const addImg = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  clickCloseMenuMobile();
+  getYear();
   addImg();
   clickMenuMobile();
   addClickSection3();
