@@ -216,6 +216,7 @@ html {
     flex-wrap: nowrap;
     padding-top: 8%;
     justify-content: center;
+    
 }
 
 .container_img_section2 {
@@ -230,18 +231,19 @@ html {
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     padding-top: 3.5%;
 }
 
 .content_information_sec2 {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     color: var(---medium-purple);
     gap: 10px;
     width: 80%;
-    height: 30%;
+    height: 100%;
     line-height: var(--line-heigth-default);
+   
 }
 
 .container_information_sec2 .default_button {
@@ -250,11 +252,12 @@ html {
 }
 
 .container_information_sec2 h2 {
-    font-size: 3em;
+    font-size: max(3.5em, 4vw);
 }
 
 .container_information_sec2 h3 {
     font-weight: 500;
+    font-size: max(1.2em, 1.3vw);
 }
 
 .img_intra {
@@ -270,7 +273,7 @@ html {
 }
 
 .content3 h2 {
-    font-size: 2.5em;
+    font-size: max(1.5em, 3.5vw);
     color: var(--white);
 }
 
@@ -961,10 +964,11 @@ html {
     }
     .content2 {
         margin: 25% 0 45% 0;
-        min-height: 100vh;
+        height: 100vh;
         width: 100%;
         position: relative;
         align-items: center;
+        
     }
     .container_img_section2 {
         width: 100%;
@@ -975,19 +979,18 @@ html {
     }
     .content_information_sec2 {
         width: 100%;
-        flex-wrap: wrap;
-        position: absolute;
+        height: 100%;
         color: var(---medium-purple);
         padding: 0 5%;
         gap: 10px;
+        position: absolute;
         left: 0;
+        justify-content: center;
+       
     }
     .content_information_sec2 .default_button {
         width: 100%;
         margin-top: 10%;
-    }
-    .content_information_sec2 h2 {
-        font-size: 2.8em;
     }
     .content_information_sec2 h3 {
         color: var(---medium-purple);
@@ -996,9 +999,10 @@ html {
     }
     .content3 {
         padding: 10px 0 0 0;
+        flex-direction: column;
     }
     .content3 h2 {
-        font-size: 1.5em;
+        text-align: center;
     }
     .container_information_sec3 {
         display: flex;
